@@ -33,7 +33,7 @@ let Raffle = function() {
         { name: 'Manuel Serrano',           img:'./img/Manuel-Serrano-01.png' },
         { name: 'Maria Ruiz',               img:'./img/Maria-Ruiz-01.jpg' },
         { name: 'MaJo Villafuerte',         img:'./img/Maria-Jose-Villafuerte-01.png' },
-        { name: 'Alejandro Dietta',         img:'./img/' },
+        { name: 'Alejandro Dietta',         img:'https://www.teflexpress.co.uk/includes/tefladvancedtheme/uploads/tefl-express-avatar-men.jpg' },
     ]
     this.selectedPair = [];
     this.allPairs = [];
@@ -52,4 +52,9 @@ Raffle.prototype.chooseOneRandom = function() {
     this.selectedPair.push(studentSelected);
     this.students.splice(randomPosition, 1);
     return studentSelected;
+}
+
+Raffle.prototype.chooseOne = function(studentSelected){
+    this.selectedPeople++;
+    this.selectedPair.push(studentSelected);
 }
