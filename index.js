@@ -7,13 +7,13 @@ window.onload = function(e){
     document.getElementById("start").onclick = function(){
         document.getElementById("home-page").style.display = "none";
         flag = "real"
-        startRaffle();
+        startRaffle(4000);
     };
     document.getElementById("try").onclick = function(){
         document.getElementById("home-page").style.display = "none";
         flag = "try";
         drawCards();
-        startRaffle();
+        startRaffle(1000);
     };
 
     function drawCards() {
@@ -27,26 +27,26 @@ window.onload = function(e){
             html += '</div>';
             html += '</div>';
         });
-        console.log(html)
         document.getElementById('board').innerHTML = html;
     }
     
 
-    function startRaffle() {
+    function startRaffle(interval) {
         var interval = setInterval(() => {
             if(newGame.raffle.students.length == 0){
                 allPairsDone(interval)
             } else {
                 var selectedStudent = newGame.raffle.chooseOneRandom();
                 var selectedCard = document.querySelector("[name='"+selectedStudent.name+"']");
-                selectedCard.style.background = "url('"+selectedStudent.img+"')";
+                selectedCard.children[0].src="";
+                selectedCard.style.backgroundImage = "url('"+selectedStudent.img+"')";
                 if (newGame.raffle.selectedPeople % 2 == 0) {
                     writePair(newGame.raffle.selectedPair);
                     newGame.raffle.allPairs.push(newGame.raffle.selectedPair)
                     newGame.raffle.selectedPair = [];
                 }
             }
-        }, 20)     
+        }, interval)     
     }
    
     function allPairsDone(interval) {
@@ -105,7 +105,7 @@ window.onload = function(e){
             newGame.raffle = new Raffle();
             document.getElementById("students-list").style.display = "inherit";
             drawCards();
-            startRaffle();
+            startRaffle(4000);
         };
     }
 

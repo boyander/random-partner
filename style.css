@@ -206,6 +206,8 @@ body {
 .student-resumee-container img {
     width: 40px;
     height: 40px;
+    object-fit: cover;
+    object-position: center;
     margin-right: 10px;
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 360px;
