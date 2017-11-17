@@ -11,22 +11,26 @@ window.onload = function(e){
     };
     document.getElementById("try").onclick = function(){
         document.getElementById("home-page").style.display = "none";
-        flag = "try"
+        flag = "try";
+        drawCards();
         startRaffle();
     };
 
-    var html = '';
-
-    newGame.raffle.students.forEach(function(pic, index) {
-        var sanitizedName = pic.name.split(' ').join('_');
-        html += '<div class= "card" name="card_' + sanitizedName + '">';
-        html += '<div class="back"';
-        html += '    name="' + pic.name + '" pic_path="'+ pic.img + '">';
-        html += '<img src="https://www.ironhack.com/assets/shared/logo.svg" alt="">';
-        html += '</div>';
-        html += '</div>';
-    });
-    document.getElementById('board').innerHTML = html;
+    function drawCards() {
+        var html = '';
+        newGame.raffle.students.forEach(function(pic, index) {
+            var sanitizedName = pic.name.split(' ').join('_');
+            html += '<div class= "card" name="card_' + sanitizedName + '">';
+            html += '<div class="back"';
+            html += '    name="' + pic.name + '" pic_path="'+ pic.img + '">';
+            html += '<img src="https://www.ironhack.com/assets/shared/logo.svg" alt="">';
+            html += '</div>';
+            html += '</div>';
+        });
+        console.log(html)
+        document.getElementById('board').innerHTML = html;
+    }
+    
 
     function startRaffle() {
         var interval = setInterval(() => {
@@ -42,7 +46,7 @@ window.onload = function(e){
                     newGame.raffle.selectedPair = [];
                 }
             }
-        }, 100)     
+        }, 20)     
     }
    
     function allPairsDone(interval) {
@@ -72,7 +76,6 @@ window.onload = function(e){
             divContainer.appendChild(node)
         });
         document.getElementById("students-list").appendChild(divContainer);
-        
     }
 
     function printTheResumee() {
@@ -98,8 +101,10 @@ window.onload = function(e){
         document.getElementById("start-after-try").onclick = function(){
             document.getElementById("try-resumee").style.display = "none";
             flag = "real"
+            document.getElementById('board').innerHTML = "";
             newGame.raffle = new Raffle();
             document.getElementById("students-list").style.display = "inherit";
+            drawCards();
             startRaffle();
         };
     }

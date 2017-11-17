@@ -80,7 +80,7 @@ body {
 
 #home-page {
     font-family: 'Roboto Mono', monospace;
-    background-image: url("./draw.jpg");
+    background-image: url("./img/draw.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
