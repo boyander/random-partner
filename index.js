@@ -14,7 +14,7 @@ window.onload = function(e){
         document.getElementById("home-page").style.display = "none";
         flag = "try";
         drawCards();
-        startRaffle(50);
+        startRaffle(1500);
     };
 
     function drawCards() {
